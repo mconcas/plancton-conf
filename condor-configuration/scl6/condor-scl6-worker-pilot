@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 export CONDOR_CONFIG_DIR="/etc/condor/config.d/"
