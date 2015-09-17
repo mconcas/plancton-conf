@@ -1,0 +1,6 @@
+# vim: set filetype=yaml:
+---
+pilot_entrypoint: /tmp/condor-centos6-worker-pilot
+pilot_dock: mconcas/centos6-autobuild-container:latest
+cpus_per_dock: 0.5
+max_docks: ncpus - 1
