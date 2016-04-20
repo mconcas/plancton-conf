@@ -1,4 +1,4 @@
-#! /bin/bash -x
+#!/bin/bash -x
 
 if [[ -f /etc/default/docker ]]; then
   echo "Setting DNS to 192.84.137.2"
