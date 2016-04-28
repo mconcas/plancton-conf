@@ -19,6 +19,13 @@ max_docks: ncpus - 1   # ncpus is the actual (physical + ht) core number.
 rigidity: soft         # [soft|medium|hard]
 morbidity: hard        # How often check container statuses.
 cputhresh: 75          # 0-100% threshold to trigger container deletion.
+
+##
+# Elastisearch feeder configurations
+##
+elasticsearch_conf:
+ address: 193.205.66.55
+ port: 9200
  
 ##
 # Condor configurations, files. 
