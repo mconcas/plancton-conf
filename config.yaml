@@ -29,7 +29,7 @@ elasticsearch_conf:
  
 ##
 # Condor configurations, files. 
-# Please notice that in a std installation is likely you don't need to edit arguments below.
+# Please notice that in a std installation is likely you do not need to edit any argument below.
 ##
 dock_condor_conf:
  condor_common_conf:   /opt/plancton/.plancton/conf/condor-configuration/10-common.config
@@ -41,3 +41,14 @@ dock_condor_conf:
 ##
 pilot_entrypoint: /tmp/condor-centos6-worker-pilot
 pilot_dock: mconcas/centos6-autobuild-container:latest
+
+
+###############################################################################
+#                    Experiment specific configurations                       #
+###############################################################################
+
+##
+# local configurations path.
+##
+local_configs:
+ cms_local_config: /opt/plancton/.plancton/conf/local-configurations/cms
