@@ -1,0 +1,48 @@
+<storage-mapping>
+
+<!-- Specific for LoadTest07  -->
+
+<!-- LFN TO PFN -->
+
+ <lfn-to-pfn protocol="direct"
+    path-match=".*/LoadTest07_CNAF_(.*)_.*_.*"
+    result=" /storage/gpfs_tsm_cms/cms/store/PhEDEx_LoadTest07/EXPORT/LoadTest07_CNAF_$1"/>
+
+<!--  
+ <lfn-to-pfn protocol="direct" destination-match=".*"
+    path-match="/+store/PhEDEx_LoadTest07/(LoadTest07_Debug_CERN/.*)" 
+    result="/castor/cnaf.infn.it/grid/lcg/cms/tape/PhEDEx_LoadTest07/IMPORT/$1"/>
+-->
+
+  <lfn-to-pfn protocol="direct" destination-match=".*"
+    path-match="/+store/PhEDEx_LoadTest07/(.*)" 
+    result="/storage/gpfs_tsm_cms/cms/store/PhEDEx_LoadTest07/IMPORT/$1"/>
+
+  <lfn-to-pfn protocol="srm" destination-match=".*" chain="direct"
+   path-match="(/cms/.*)" result="srm://storm-fe-cms.cr.cnaf.infn.it:8444/srm/managerv2?SFN=$1"/>
+
+  <lfn-to-pfn protocol="srmv2" destination-match=".*"
+   path-match="/+store/(.*)" result="srm://storm-fe-cms.cr.cnaf.infn.it:8444/srm/managerv2?SFN=/cms/store/$1"/>
+
+<!-- leaving these lines. But they are not needed -->
+
+  <lfn-to-pfn protocol="srm" destination-match=".*" chain="direct"
+    path-match="(.*)" result="srm://castorsrm.cr.cnaf.infn.it:8443/srm/managerv1?SFN=$1"/>
+
+  <lfn-to-pfn protocol="srmv2" destination-match=".*" chain="direct"
+   path-match="(.*)" result="srm://srm-v2-cms.cr.cnaf.infn.it:8443/srm/managerv2?SFN=$1"/>
+
+<!-- PFN TO LFN -->
+  <pfn-to-lfn protocol="direct" destination-match=".*"
+    path-match="/cms/storm/PhEDEx_LoadTest07/IMPORT/(.*)" result="/store/PhEDEx_LoadTest07/$1"/>
+
+  <pfn-to-lfn protocol="direct" destination-match=".*"
+    path-match="/castor/cnaf.infn.it/grid/lcg/cms/tape/PhEDEx_LoadTest07/IMPORT/(.*)" result="/store/PhEDEx_LoadTest07/$1"/>
+
+  <pfn-to-lfn protocol="srm" destination-match=".*" chain="direct"
+    path-match=".*\?SFN=(.*)" result="$1"/>
+
+  <pfn-to-lfn protocol="srmv2" destination-match=".*" chain="direct"
+    path-match=".*\?SFN=(.*)" result="$1"/>
+
+</storage-mapping>
