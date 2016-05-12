@@ -14,4 +14,4 @@ export PARROT_CVMFS_REPO="<default-repositories> \
  ilc.desy.de:url=${DESY_S1}/ilc.desy.de,pubkey=/etc/cvmfs/keys/desy.de/desy.de.pub"
 export HTTP_PROXY=t2-squid-01.to.infn.it:3128
 
-exec parrot_run "$@"
+exec parrot_run -U1234 "$@"
