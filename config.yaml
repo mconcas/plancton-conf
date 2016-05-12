@@ -37,6 +37,11 @@ dock_condor_conf:
  condor_base_conf:     /opt/plancton/.plancton/conf/condor-configuration/condor_config
 
 ##
+# Parrot parameters
+##
+parrot_wrapper_path: /opt/plancton/.plancton/conf/wrapper/parrot-job-wrapper.sh
+
+##
 # Docks parameters 
 ##
 pilot_entrypoint: /tmp/condor-centos6-worker-pilot
