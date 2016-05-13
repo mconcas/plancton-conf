@@ -46,7 +46,7 @@ parrot_wrapper_path: /opt/plancton/.plancton/conf/wrapper/parrot-job-wrapper.sh
 ##
 pilot_entrypoint: /tmp/condor-centos6-worker-pilot
 pilot_dock: mconcas/centos6-autobuild-container:latest
-pilot_privileged: False 
+pilot_privileged: True 
 
 
 ###############################################################################
