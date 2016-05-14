@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "<< Parrot wrapper for jobs relying on cvmfs data >>"
 ##
 # Prepare a minimal environment for condor jobs.
 ##
