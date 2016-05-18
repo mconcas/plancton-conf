@@ -13,7 +13,7 @@ dock_condor_conf:
 
 parrot_wrapper_path: /dev/null
 
-pilot_dock: plancton/slc6-wq
+pilot_dock: plancton/slc6-wq:latest
 pilot_privileged: True 
 
 local_configs:
