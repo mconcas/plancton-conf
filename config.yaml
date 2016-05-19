@@ -1,7 +1,7 @@
 # vim: set filetype=yaml:
 ---
 cpus_per_dock: 1
-max_docks: ncpus - 1
+max_docks: 1
 rigidity: soft
 morbidity: hard
 cputhresh: 100
