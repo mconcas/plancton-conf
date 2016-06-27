@@ -6,47 +6,39 @@
 
 ##
 # This configuration file is intended to be left as is. Every modification or
-# edit might cause a deamon malfunction. Remember that to be a computing 
+# edit might cause the deamon to behave naughtly. Remember that to be a computing
 # volunteer means to share your spare resources to the community, not to
-# renounce to use your PC. Be generous!  
+# renounce to use your PC. Be generous!
 ##
 
 ##
 # Resources constraints.
 ##
-cpus_per_dock: 0.5     # the amount of CPU to share.
-max_docks: ncpus - 1   # ncpus is the actual (physical + ht) core number.
-rigidity: soft         # [soft|medium|hard]
-morbidity: hard        # How often check container statuses.
-cputhresh: 75          # 0-100% threshold to trigger container deletion.
-
-##
-# Elastisearch feeder configurations
-##
-elasticsearch_conf:
- address: 193.205.66.55
- port: 9200
- 
-##
-# Condor configurations, files. 
-# Please notice that in a std installation is likely you do not need to edit any argument below.
-##
-dock_condor_conf:
- condor_common_conf:   /opt/plancton/.plancton/conf/condor-configuration/10-common.config
- condor_worknode_conf: /opt/plancton/.plancton/conf/condor-configuration/00-worker.config
- condor_base_conf:     /opt/plancton/.plancton/conf/condor-configuration/condor_config
+cpus_per_dock: 0.5
+max_docks: ncpus - 1
+grace_kill: 10
+grace_spawn: 20
+main_sleep: 5
+docker_image: busybox
+max_ttl: 500
+max_docks: 1
+updateconfig: 10
+binds:
+ - /opt/plancton/.plancton/conf/condor-configuration/10-common.config:/etc/condor/config.d/10-common.config
+ - /opt/plancton/.plancton/conf/condor-configuration/00-worker.config:/etc/condor/config.d/00-worker.config
+ - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
 
 ##
 # Parrot parameters
 ##
-parrot_wrapper_path: /opt/plancton/.plancton/conf/wrapper/parrot-job-wrapper.sh
+# parrot_wrapper_path: /opt/plancton/.plancton/conf/wrapper/parrot-job-wrapper.sh
 
 ##
-# Docks parameters 
+# Container parameters
 ##
-pilot_entrypoint: /tmp/condor-centos6-worker-pilot
-pilot_dock: mconcas/centos6-autobuild-container:latest
-pilot_privileged: False 
+docker_cmd: [ /tmp/condor-centos6-worker-pilot ]
+docker_image: mconcas/centos6-autobuild-container:latest
+docker_privileged: False
 
 
 ###############################################################################
@@ -56,5 +48,5 @@ pilot_privileged: False
 ##
 # local configurations path.
 ##
-local_configs:
- cms_local_config: /opt/plancton/.plancton/conf/local-configurations/cms
+# local_configs:
+#  cms_local_config: /opt/plancton/.plancton/conf/local-configurations/cms
