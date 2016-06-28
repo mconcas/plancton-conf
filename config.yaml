@@ -1,52 +1,27 @@
-# vim: set filetype=yaml:
+# vim: set filetype=yaml
 ---
-###############################################################################
-#      Plancton: a voluntary computing project.      email: mconcas@cern.ch   #
-###############################################################################
+## Plancton: a voluntary computing project
+## author: Matteo Concas
+## email:  mconcas@cern.ch
 
-##
-# This configuration file is intended to be left as is. Every modification or
-# edit might cause the deamon to behave naughtly. Remember that to be a computing
-# volunteer means to share your spare resources to the community, not to
-# renounce to use your PC. Be generous!
-##
+## This configuration file is intended to be left as is. Every modification or
+## edit might cause the deamon to behave badly.
 
-##
-# Resources constraints.
-##
-cpus_per_dock: 0.5
+## Resources constraints
+cpus_per_dock: 1
 max_docks: ncpus - 1
 grace_kill: 10
 grace_spawn: 20
 main_sleep: 5
-docker_image: busybox
 max_ttl: 500
-max_docks: 1
 updateconfig: 10
 binds:
  - /opt/plancton/.plancton/conf/condor-configuration/10-common.config:/etc/condor/config.d/10-common.config
  - /opt/plancton/.plancton/conf/condor-configuration/00-worker.config:/etc/condor/config.d/00-worker.config
  - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
 
-##
-# Parrot parameters
-##
-# parrot_wrapper_path: /opt/plancton/.plancton/conf/wrapper/parrot-job-wrapper.sh
-
-##
-# Container parameters
-##
+## Container parameters
 docker_cmd: [ /tmp/condor-centos6-worker-pilot ]
 docker_image: mconcas/centos6-autobuild-container:latest
 docker_privileged: False
 
-
-###############################################################################
-#                    Experiment specific configurations                       #
-###############################################################################
-
-##
-# local configurations path.
-##
-# local_configs:
-#  cms_local_config: /opt/plancton/.plancton/conf/local-configurations/cms
