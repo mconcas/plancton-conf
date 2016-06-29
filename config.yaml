@@ -22,6 +22,8 @@ binds:
  - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
 devices:
  - /dev/fuse
+capabilites:
+ - SYS_ADMIN
 docker_cmd: [ /tmp/condor-centos6-worker-pilot ]
 docker_image: mconcas/centos6-autobuild-container:latest
 docker_privileged: False
