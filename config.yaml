@@ -21,10 +21,12 @@ binds:
  - /opt/plancton/.plancton/conf/condor-configuration/00-worker.config:/etc/condor/config.d/00-worker.config
  - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
 devices:
- - /dev/fuse
+ - PathOnHost: /dev/fuse
+   PathInContainer: /dev/fuse
+   CgroupPermissions: rw
 capabilites:
  - SYS_ADMIN
 docker_cmd: [ /tmp/condor-centos6-worker-pilot ]
-docker_image: plancton/slc6-fuse:latest 
+docker_image: plancton/slc6-fuse:latest
 docker_privileged: False
 
