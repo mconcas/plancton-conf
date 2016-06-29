@@ -25,6 +25,6 @@ devices:
 capabilites:
  - SYS_ADMIN
 docker_cmd: [ /tmp/condor-centos6-worker-pilot ]
-docker_image: mconcas/centos6-autobuild-container:latest
+docker_image: plancton/slc6-fuse:latest 
 docker_privileged: False
 
