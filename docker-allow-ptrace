@@ -12,6 +12,7 @@ profile docker-allow-ptrace flags=(attach_disconnected,mediate_deleted) {
   capability,
   file,
   umount,
+  mount,
   ptrace peer=@{profile_name},
 
   deny @{PROC}/{*,**^[0-9*],sys/kernel/shm*} wkx,
@@ -19,8 +20,6 @@ profile docker-allow-ptrace flags=(attach_disconnected,mediate_deleted) {
   deny @{PROC}/mem rwklx,
   deny @{PROC}/kmem rwklx,
   deny @{PROC}/kcore rwklx,
-
-  deny mount,
 
   deny /sys/[^f]*/** wklx,
   deny /sys/f[^s]*/** wklx,
