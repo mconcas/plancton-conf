@@ -1,60 +1,39 @@
-# vim: set filetype=yaml:
+# vim: set filetype=yaml
 ---
-###############################################################################
-#      Plancton: a voluntary computing project.      email: mconcas@cern.ch   #
-###############################################################################
+## Plancton: a voluntary computing project
+## author: Matteo Concas
+## email:  mconcas@cern.ch
 
-##
-# This configuration file is intended to be left as is. Every modification or
-# edit might cause a deamon malfunction. Remember that to be a computing 
-# volunteer means to share your spare resources to the community, not to
-# renounce to use your PC. Be generous!  
-##
+## This configuration file is intended to be left as is. Every modification or
+## edit might cause the deamon to behave badly.
 
-##
-# Resources constraints.
-##
-cpus_per_dock: 0.5     # the amount of CPU to share.
-max_docks: ncpus - 1   # ncpus is the actual (physical + ht) core number.
-rigidity: soft         # [soft|medium|hard]
-morbidity: hard        # How often check container statuses.
-cputhresh: 75          # 0-100% threshold to trigger container deletion.
+## Resources constraints
+cpus_per_dock: 1
+max_docks: ncpus - 1
+grace_kill: 10
+grace_spawn: 20
+main_sleep: 5
+max_ttl: 500
+updateconfig: 10
 
-##
-# Elastisearch feeder configurations
-##
-elasticsearch_conf:
- address: 193.205.66.55
- port: 9200
- 
-##
-# Condor configurations, files. 
-# Please notice that in a std installation is likely you do not need to edit any argument below.
-##
-dock_condor_conf:
- condor_common_conf:   /opt/plancton/.plancton/conf/condor-configuration/10-common.config
- condor_worknode_conf: /opt/plancton/.plancton/conf/condor-configuration/00-worker.config
- condor_base_conf:     /opt/plancton/.plancton/conf/condor-configuration/condor_config
+## Container parameters
+binds:
+ - /opt/plancton/.plancton/conf/condor-configuration/10-common.config:/etc/condor/config.d/10-common.config
+ - /opt/plancton/.plancton/conf/condor-configuration/00-worker.config:/etc/condor/config.d/00-worker.config
+ - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
 
-##
-# Parrot parameters
-##
-parrot_wrapper_path: /opt/plancton/.plancton/conf/wrapper/parrot-job-wrapper.sh
+devices:
+ - PathOnHost: /dev/fuse
+   PathInContainer: /dev/fuse
+   CgroupPermissions: rw
 
-##
-# Docks parameters 
-##
-pilot_entrypoint: /tmp/condor-centos6-worker-pilot
-pilot_dock: mconcas/centos6-autobuild-container:latest
-pilot_privileged: False 
+capabilities:
+ - SYS_ADMIN
 
+secopt:
+ - docker-cvmfs
 
-###############################################################################
-#                    Experiment specific configurations                       #
-###############################################################################
+docker_cmd: [ /tmp/condor-container-pilot ]
+docker_image: plancton/slc6-fuse-ab:latest
+docker_privileged: False
 
-##
-# local configurations path.
-##
-local_configs:
- cms_local_config: /opt/plancton/.plancton/conf/local-configurations/cms
