@@ -24,7 +24,7 @@ devices:
  - PathOnHost: /dev/fuse
    PathInContainer: /dev/fuse
    CgroupPermissions: rw
-capabilites:
+capabilities:
  - SYS_ADMIN
 docker_cmd: [ /tmp/condor-container-pilot ]
 docker_image: plancton/slc6-fuse-ab:latest
