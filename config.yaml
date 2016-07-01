@@ -15,17 +15,24 @@ grace_spawn: 20
 main_sleep: 5
 max_ttl: 500
 updateconfig: 10
+
 ## Container parameters
 binds:
  - /opt/plancton/.plancton/conf/condor-configuration/10-common.config:/etc/condor/config.d/10-common.config
  - /opt/plancton/.plancton/conf/condor-configuration/00-worker.config:/etc/condor/config.d/00-worker.config
  - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
+
 devices:
  - PathOnHost: /dev/fuse
    PathInContainer: /dev/fuse
    CgroupPermissions: rw
+
 capabilities:
  - SYS_ADMIN
+
+secopt:
+ - docker-cvmfs
+
 docker_cmd: [ /tmp/condor-container-pilot ]
 docker_image: plancton/slc6-fuse-ab:latest
 docker_privileged: False
