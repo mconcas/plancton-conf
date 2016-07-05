@@ -31,7 +31,7 @@ capabilities:
  - SYS_ADMIN
 
 secopt:
- - docker-cvmfs
+ - apparmor:docker-cvmfs
 
 docker_cmd: [ /tmp/condor-container-pilot ]
 docker_image: plancton/slc6-fuse-ab:latest
