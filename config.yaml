@@ -13,7 +13,7 @@ max_docks: ncpus - 1
 grace_kill: 10
 grace_spawn: 20
 main_sleep: 5
-max_ttl: 500
+max_ttl: 43200
 updateconfig: 10
 
 ## Container parameters
