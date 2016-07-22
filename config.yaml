@@ -16,9 +16,7 @@ docker_cmd: [ /bin/sh, -c, "while [[ 1 ]]; do cat /dummyfile; sleep 5; done" ]
 binds:
  - /tmp/dummyfile:/dummyfile
 devices:
- - PathOnHost: /dev/fuse
-   PathInContainer: /dev/fuse
-   CgroupPermissions: rw
+ - /dev/fuse:/dev/fuse:rw
 capabilities:
  - SYS_ADMIN
 security_opts:
