@@ -1,0 +1,25 @@
+# vim: set filetype=yaml:
+---
+updateconfig: 10
+#image_expiration:
+main_sleep: 5
+grace_kill: 10
+grace_spawn: 20
+cpus_per_dock: 1
+max_docks: 1
+max_ttl: 500
+docker_image: busybox
+docker_cmd: [ /bin/sh, -c, "while [[ 1 ]]; do cat /dummyfile; sleep 5; done" ]
+#docker_privileged:
+#max_dock_mem:
+#max_dock_swap:
+binds:
+ - /tmp/dummyfile:/dummyfile
+devices:
+ - PathOnHost: /dev/fuse
+   PathInContainer: /dev/fuse
+   CgroupPermissions: rw
+capabilities:
+ - SYS_ADMIN
+security_opts:
+ - apparmor:docker-cvmfs
