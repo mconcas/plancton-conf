@@ -1,39 +1,11 @@
-# vim: set filetype=yaml
 ---
-## Plancton: a voluntary computing project
-## author: Matteo Concas
-## email:  mconcas@cern.ch
-
-## This configuration file is intended to be left as is. Every modification or
-## edit might cause the deamon to behave badly.
-
-## Resources constraints
-cpus_per_dock: 1
-max_docks: ncpus - 1
-grace_kill: 10
-grace_spawn: 20
-main_sleep: 5
-max_ttl: 43200
-updateconfig: 10
-
-## Container parameters
-binds:
- - /opt/plancton/.plancton/conf/condor-configuration/10-common.config:/etc/condor/config.d/10-common.config
- - /opt/plancton/.plancton/conf/condor-configuration/00-worker.config:/etc/condor/config.d/00-worker.config
- - /opt/plancton/.plancton/conf/condor-configuration/condor_config:/etc/condor/condor_config
-
-devices:
- - PathOnHost: /dev/fuse
-   PathInContainer: /dev/fuse
-   CgroupPermissions: rw
-
-capabilities:
- - SYS_ADMIN
-
-secopt:
- - apparmor:docker-cvmfs
-
-docker_cmd: [ /tmp/condor-container-pilot ]
-docker_image: plancton/slc6-fuse-ab:latest
-docker_privileged: False
-
+updateconfig:       10
+main_sleep:         10
+grace_kill:         100
+grace_spawn:        100
+cpus_per_dock:      1
+max_docks:          ncpus
+max_ttl:            172800
+docker_privileged:  True
+max_dock_mem:       2750000000
+max_dock_swap:      1000000000
