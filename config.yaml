@@ -4,11 +4,8 @@ main_sleep:         10
 grace_kill:         100
 grace_spawn:        100
 cpus_per_dock:      1
-docker_cmd:
- - /bin/sleep
- - "60"
+docker_cmd: /bin/sleep 60
 max_docks:          ncpus
 max_ttl:            172800
-docker_privileged:  False
 max_dock_mem:       2750000000
 max_dock_swap:      1000000000
